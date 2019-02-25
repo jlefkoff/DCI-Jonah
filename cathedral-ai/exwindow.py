@@ -1,11 +1,25 @@
-Example (Hello, World):
-import tkinter
-from tkinter.constants import \*
-tk = tkinter.Tk()
-frame = tkinter.Frame(tk, relief=RIDGE, borderwidth=2)
-frame.pack(fill=BOTH,expand=1)
-label = tkinter.Label(frame, text="Hello, World")
-label.pack(fill=X, expand=1)
-button = tkinter.Button(frame,text="Exit",command=tk.destroy)
-button.pack(side=BOTTOM)
-tk.mainloop()
+import tkinter as tk
+
+class Application(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.hi_there = tk.Button(self)
+        self.hi_there["text"] = "Hello World\n(click me)"
+        self.hi_there["command"] = self.say_hi
+        self.hi_there.pack(side="top")
+
+        self.quit = tk.Button(self, text="QUIT", fg="blue",
+                              command=self.master.destroy)
+        self.quit.pack(side="bottom")
+
+    def say_hi(self):
+        print("hi there, everyone!")
+
+root = tk.Tk()
+app = Application(master=root)
+app.mainloop()
