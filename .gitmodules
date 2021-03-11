@@ -1,0 +1,3 @@
+[submodule "lidarspeedometer/lidarwebapp"]
+	path = lidarspeedometer/lidarwebapp
+	url = https://github.com/jlefkoff/lidarWebapp
